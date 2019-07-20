@@ -148,7 +148,8 @@ export default class NumericInput extends Component {
     }
 
     onFocus = () => {
-        this.setState({ lastValid: this.state.value })
+        console.log('WHAT IS THIS', this.props.clearValueOnEdit);
+        this.setState({ lastValid: this.props.clearValueOnEdit ? undefined : this.state.value })
         this.props.onFocus && this.props.onFocus()
     }
 
@@ -303,6 +304,7 @@ NumericInput.propTypes = {
     rightButtonBackgroundColor: PropTypes.string,
     leftButtonBackgroundColor: PropTypes.string,
     editable: PropTypes.bool,
+    clearValueOnEdit: PropTypes.bool,
     reachMaxIncIconStyle: PropTypes.any,
     reachMaxDecIconStyle: PropTypes.any,
     reachMinIncIconStyle: PropTypes.any,
@@ -330,6 +332,7 @@ NumericInput.defaultProps = {
     rightButtonBackgroundColor: 'white',
     leftButtonBackgroundColor: 'white',
     editable: true,
+    clearValueOnEdit: false,
     validateOnBlur: true,
     reachMaxIncIconStyle: {},
     reachMaxDecIconStyle: {},
